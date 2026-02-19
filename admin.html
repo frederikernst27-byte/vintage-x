@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINTAGE X - Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --accent: #ff4d00;
+            --accent-gradient: linear-gradient(135deg, #ff4d00 0%, #ff8c00 100%);
+            --text: #ffffff;
+            --text-muted: #888888;
+            --border: #2a2a2a;
+            --glow: 0 0 30px rgba(255, 77, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .login-container h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .login-container input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            box-shadow: var(--glow);
+        }
+
+        .error {
+            color: #ff4444;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Admin Dashboard (hidden by default) */
+        .admin-dashboard {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .upload-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .upload-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .image-preview {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .upload-btn {
+            width: 100%;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .products-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .products-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .product-item {
+            background: var(--bg-dark);
+            padding: 1rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-item .name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-item .price {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .product-item .delete-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #ff4444;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-card .label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .link-section {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .link-section a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login -->
+    <div class="login-container" id="loginScreen">
+        <div class="logo">VINTAGE X</div>
+        <h2>🔒 Admin Login</h2>
+        <input type="password" id="password" placeholder="Passwort eingeben">
+        <button class="login-btn" onclick="login()">Einloggen</button>
+        <p class="error" id="errorMsg">Falsches Passwort!</p>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="dashboard">
+        <div class="admin-header">
+            <div class="logo">VINTAGE X - Admin</div>
+            <button class="logout-btn" onclick="logout()">Ausloggen</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number" id="totalProducts">0</div>
+                <div class="label">Produkte</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="totalValue">0€</div>
+                <div class="label">Gesamtwert</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="categories">0</div>
+                <div class="label">Kategorien</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="upload-section">
+                <h3>➕ Neues Produkt</h3>
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label>Produktname</label>
+                        <input type="text" id="productName" required placeholder="z.B. Vintage Band Tee">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Preis (€)</label>
+                        <input type="number" id="productPrice" required placeholder="45.00" step="0.01" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Kategorie</label>
+                        <select id="productCategory">
+                            <option value="shirts">Band Tees</option>
+                            <option value="jackets">Jacken</option>
+                            <option value="pants">Pants</option>
+                            <option value="hoodies">Hoodies</option>
+                            <option value="accessoires">Accessoires</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Bild hochladen</label>
+                        <input type="file" id="productImage" accept="image/*">
+                        <img id="imagePreview" class="image-preview" alt="Vorschau">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>ODER Bild-URL</label>
+                        <input type="url" id="productImageUrl" placeholder="https://...">
+                    </div>
+                    
+                    <button type="submit" class="upload-btn">✓ Produkt hinzufügen</button>
+                </form>
+
+                <div class="link-section">
+                    <p>Zum Shop: <a href="index.html" target="_blank">VINTAGE X</a></p>
+                </div>
+            </div>
+
+            <div class="products-section">
+                <h3>📦 Alle Produkte</h3>
+                <div class="product-grid" id="productGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple password protection
+        const ADMIN_PASSWORD = "fredi123"; // Change this!
+
+        // Product storage (localStorage)
+        let products = JSON.parse(localStorage.getItem('vintageProducts')) || [
+            { id: 1, name: "Vintage Band Tee", price: 45, category: "shirts", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400" },
+            { id: 2, name: "90s Lederjacke", price: 129, category: "jackets", image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400" }
+        ];
+
+        // Check if already logged in
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            showDashboard();
+        }
+
+        function login() {
+            const password = document.getElementById('password').value;
+            if (password === ADMIN_PASSWORD) {
+                localStorage.setItem('adminLoggedIn', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            location.reload();
+        }
+
+        function showDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            renderProducts();
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('totalProducts').textContent = products.length;
+            const total = products.reduce((sum, p) => sum + (p.price || 0), 0);
+            document.getElementById('totalValue').textContent = total.toFixed(0) + '€';
+            const cats = [...new Set(products.map(p => p.category))].length;
+            document.getElementById('categories').textContent = cats;
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-item">
+                    <button class="delete-btn" onclick="deleteProduct(${p.id})">×</button>
+                    <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/200x120?text=No+Image'">
+                    <div class="name">${p.name}</div>
+                    <div class="price">${(p.price || 0).toFixed(2)} €</div>
+                </div>
+            `).join('');
+            updateStats();
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Produkt löschen?')) {
+                products = products.filter(p => p.id !== id);
+                localStorage.setItem('vintageProducts', JSON.stringify(products));
+                renderProducts();
+            }
+        }
+
+        // Image preview
+        document.getElementById('productImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle form submit
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('productName').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const category = document.getElementById('productCategory').value;
+            
+            let image = '';
+            const fileInput = document.getElementById('productImage');
+            const urlInput = document.getElementById('productImageUrl').value;
+            
+            if (fileInput.files.length > 0) {
+                image = document.getElementById('imagePreview').src;
+            } else if (urlInput) {
+                image = urlInput;
+            } else {
+                image = 'https://via.placeholder.com/400x300?text=Vintage+X';
+            }
+            
+            const newProduct = {
+                id: Date.now(),
+                name,
+                price,
+                category,
+                image
+            };
+            
+            products.push(newProduct);
+            localStorage.setItem('vintageProducts', JSON.stringify(products));
+            
+            renderProducts();
+            
+            document.getElementById('uploadForm').reset();
+            document.getElementById('imagePreview').style.display = 'none';
+            
+            alert('Produkt hinzugefügt! ✅');
+        });
+
+        // Enter key for login
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') login();
+        });
+    </script>
+</body>
+</html>
