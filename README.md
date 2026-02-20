@@ -1,2 +1,1 @@
-# zeitlos-vintage
-ZEITLOS Vintage - Second Hand Mode Online Shop
+# VINTAGE X - Vintage Streetwear Shop
