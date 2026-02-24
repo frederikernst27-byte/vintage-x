@@ -1087,17 +1087,53 @@
  function checkoutPayPal() {
  if (cart.length === 0) return;
  
+ // Get customer info
+ const customerName = prompt('Dein Name:');
+ if (!customerName) return;
+ 
+ const customerEmail = prompt('Deine E-Mail:');
+ if (!customerEmail) return;
+ 
+ const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+ const shipping = 5;
+ const total = subtotal + shipping;
+ 
  const order = {
  id: 'ORD-' + Date.now(),
  date: new Date().toISOString(),
- items: [...cart],
- total: cart.reduce((sum, item) => sum + parseFloat(item.price), 0) + 5,
+ items: cart.map(item => ({ name: item.name, price: item.price, qty: 1 })),
+ customer: { name: customerName, email: customerEmail },
+ subtotal: subtotal,
+ shipping: shipping,
+ total: total,
  method: 'PayPal',
  status: 'pending'
  };
  
  saveOrder(order);
- showToast('Bestellung erstellt! (#' + order.id + ')');
+ 
+ // Create PayPal.me link
+ const paypalLink = 'https://www.paypal.com/paypalme/frederikernst2702/' + total.toFixed(2) + 'EUR';
+ 
+ // Send email notification
+ const emailBody = 'NEUE BESTELLUNG - VINTAGE X\n\n' +
+ 'Bestellnr: ' + order.id + '\n' +
+ 'Kunde: ' + customerName + '\n' +
+ 'Email: ' + customerEmail + '\n\n' +
+ 'Produkte:\n' +
+ cart.map(item => '- ' + item.name + ' - EUR ' + parseFloat(item.price).toFixed(2)).join('\n') + '\n\n' +
+ 'Versand: EUR ' + shipping.toFixed(2) + '\n' +
+ 'GESAMT: EUR ' + total.toFixed(2) + '\n\n' +
+ 'Zahlung via PayPal.me erwartet.';
+ 
+ window.open('mailto:frederik.ernst27@gmail.com?subject=' + encodeURIComponent('Bestellung: ' + order.id) + '&body=' + encodeURIComponent(emailBody), '_blank');
+ 
+ // Open PayPal after short delay
+ setTimeout(() => {
+ window.open(paypalLink, '_blank');
+ }, 500);
+ 
+ showToast('Weiterleitung zu PayPal...');
  cart = [];
  updateCart();
  toggleCart();
