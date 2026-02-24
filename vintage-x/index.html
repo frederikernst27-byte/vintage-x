@@ -5,18 +5,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>VINTAGE X | Premium Vintage Streetwear</title>
  <meta name="description" content="Dein Source für authentische Vintage-Klamotten. Band Tees, Lederjacken, Streetwear.">
- 
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
- 
  <style>
- *, *::before, *::after {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- }
-
+ *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
  :root {
  --bg-primary: #0a0a0a;
  --bg-secondary: #111111;
@@ -33,716 +26,147 @@
  --success: #10b981;
  --warning: #f59e0b;
  }
-
  html { scroll-behavior: smooth; }
-
- body {
- font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
- background: var(--bg-primary);
- color: var(--text-primary);
- line-height: 1.6;
- overflow-x: hidden;
- }
-
- .bg-effects {
- position: fixed;
- top: 0; left: 0; right: 0; bottom: 0;
- z-index: -1;
- pointer-events: none;
- }
-
- .bg-gradient {
- position: absolute;
- top: 0; left: 0; right: 0; bottom: 0;
- background: 
- radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255, 77, 0, 0.08) 0%, transparent 50%),
- radial-gradient(ellipse 50% 30% at 80% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
- }
-
- .bg-grid {
- position: absolute;
- top: 0; left: 0; right: 0; bottom: 0;
- background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
- linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
- background-size: 60px 60px;
- mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 10%, transparent 70%);
- }
-
+ body { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+ .bg-effects { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none; }
+ .bg-gradient { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255, 77, 0, 0.08) 0%, transparent 50%), radial-gradient(ellipse 50% 30% at 80% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 50%); }
+ .bg-grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 10%, transparent 70%); }
  .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
-
- /* Navigation */
- nav {
- position: fixed;
- top: 0; left: 0; right: 0;
- z-index: 1000;
- padding: 1.25rem 0;
- background: rgba(10, 10, 10, 0.85);
- backdrop-filter: blur(20px);
- border-bottom: 1px solid rgba(255,255,255,0.05);
- }
-
+ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.25rem 0; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
  nav.scrolled { padding: 0.75rem 0; background: rgba(10, 10, 10, 0.95); }
-
  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-
- .logo {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 2rem;
- letter-spacing: 0.05em;
- color: var(--text-primary);
- text-decoration: none;
- display: flex;
- align-items: center;
- gap: 0.5rem;
- }
-
+ .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.05em; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
  .logo span { color: var(--accent); }
-
  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-
- .nav-links a {
- color: var(--text-secondary);
- text-decoration: none;
- font-size: 0.9rem;
- font-weight: 500;
- transition: color 0.2s;
- position: relative;
- }
-
+ .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; position: relative; }
  .nav-links a:hover { color: var(--text-primary); }
-
- .nav-links a::after {
- content: '';
- position: absolute;
- bottom: -4px; left: 0;
- width: 0; height: 2px;
- background: var(--accent);
- transition: width 0.3s;
- }
-
+ .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
  .nav-links a:hover::after { width: 100%; }
-
  .nav-actions { display: flex; align-items: center; gap: 1rem; }
-
- .btn {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- padding: 0.75rem 1.5rem;
- border-radius: 8px;
- font-size: 0.9rem;
- font-weight: 600;
- text-decoration: none;
- transition: all 0.3s;
- cursor: pointer;
- border: none;
- font-family: inherit;
- }
-
- .btn-primary {
- background: var(--accent);
- color: white;
- box-shadow: 0 4px 20px var(--accent-glow);
- }
-
- .btn-primary:hover {
- transform: translateY(-2px);
- box-shadow: 0 8px 30px var(--accent-glow);
- }
-
- .cart-btn {
- position: relative;
- width: 44px; height: 44px;
- background: var(--bg-tertiary);
- border: 1px solid var(--border);
- border-radius: 8px;
- display: flex;
- align-items: center;
- justify-content: center;
- cursor: pointer;
- transition: all 0.2s;
- }
-
- .cart-btn:hover {
- border-color: var(--accent);
- background: rgba(255, 77, 0, 0.1);
- }
-
- .cart-count {
- position: absolute;
- top: -6px; right: -6px;
- width: 20px; height: 20px;
- background: var(--accent);
- border-radius: 50%;
- font-size: 0.7rem;
- font-weight: 700;
- display: flex;
- align-items: center;
- justify-content: center;
- }
-
- /* Hero Section */
- .hero {
- min-height: 100vh;
- display: flex;
- align-items: center;
- padding: 120px 0 80px;
- position: relative;
- }
-
+ .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; font-family: inherit; }
+ .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 20px var(--accent-glow); }
+ .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+ .cart-btn { position: relative; width: 44px; height: 44px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+ .cart-btn:hover { border-color: var(--accent); background: rgba(255, 77, 0, 0.1); }
+ .cart-count { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+ .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; }
  .hero-content { max-width: 700px; }
-
- .hero-badge {
- display: inline-block;
- padding: 0.5rem 1rem;
- background: rgba(255, 77, 0, 0.1);
- border: 1px solid rgba(255, 77, 0, 0.2);
- border-radius: 100px;
- font-size: 0.8rem;
- font-weight: 600;
- color: var(--accent);
- margin-bottom: 1.5rem;
- text-transform: uppercase;
- letter-spacing: 0.05em;
- }
-
- .hero h1 {
- font-family: 'Bebas Neue', sans-serif;
- font-size: clamp(3rem, 8vw, 6rem);
- line-height: 0.95;
- letter-spacing: 0.02em;
- margin-bottom: 1.5rem;
- }
-
+ .hero-badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(255, 77, 0, 0.1); border: 1px solid rgba(255, 77, 0, 0.2); border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+ .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6rem); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1.5rem; }
  .hero h1 span { color: var(--accent); }
-
- .hero p {
- font-size: 1.1rem;
- color: var(--text-secondary);
- max-width: 480px;
- margin-bottom: 2rem;
- line-height: 1.7;
- }
-
+ .hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 480px; margin-bottom: 2rem; line-height: 1.7; }
  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-
- /* Categories */
  .categories { padding: 80px 0; }
-
  .section-header { text-align: center; margin-bottom: 3rem; }
-
- .section-label {
- display: inline-block;
- font-size: 0.8rem;
- font-weight: 600;
- text-transform: uppercase;
- letter-spacing: 0.1em;
- color: var(--accent);
- margin-bottom: 0.75rem;
- }
-
- .section-header h2 {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 2.5rem;
- letter-spacing: 0.02em;
- }
-
+ .section-label { display: inline-block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem; }
+ .section-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 0.02em; }
  .categories-grid { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-
- .category-btn {
- padding: 0.75rem 1.5rem;
- background: var(--bg-tertiary);
- border: 1px solid var(--border);
- border-radius: 100px;
- color: var(--text-secondary);
- font-size: 0.9rem;
- font-weight: 500;
- cursor: pointer;
- transition: all 0.3s;
- font-family: inherit;
- }
-
- .category-btn:hover, .category-btn.active {
- background: var(--accent);
- border-color: var(--accent);
- color: white;
- }
-
- /* Products */
+ .category-btn { padding: 0.75rem 1.5rem; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 100px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+ .category-btn:hover, .category-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
  .products { padding: 40px 0 100px; }
-
- .products-grid {
- display: grid;
- grid-template-columns: repeat(4, 1fr);
- gap: 1.5rem;
- }
-
- .product-card {
- background: var(--bg-secondary);
- border: 1px solid var(--border);
- border-radius: 12px;
- overflow: hidden;
- transition: all 0.4s ease;
- position: relative;
- }
-
- .product-card:hover {
- transform: translateY(-8px);
- border-color: var(--border-light);
- box-shadow: 0 20px 40px rgba(0,0,0,0.3);
- }
-
- .product-badge {
- position: absolute;
- top: 12px; left: 12px;
- padding: 0.35rem 0.75rem;
- background: var(--accent);
- border-radius: 4px;
- font-size: 0.7rem;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.05em;
- z-index: 1;
- }
-
- .product-image {
- width: 100%;
- aspect-ratio: 1;
- object-fit: cover;
- background: var(--bg-tertiary);
- }
-
+ .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+ .product-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.4s ease; position: relative; }
+ .product-card:hover { transform: translateY(-8px); border-color: var(--border-light); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+ .product-badge { position: absolute; top: 12px; left: 12px; padding: 0.35rem 0.75rem; background: var(--accent); border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; z-index: 1; }
+ .product-image { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--bg-tertiary); }
  .product-info { padding: 1.25rem; }
-
- .product-name {
- font-weight: 600;
- font-size: 1rem;
- margin-bottom: 0.5rem;
- line-height: 1.3;
- }
-
- .product-price {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 1.4rem;
- color: var(--accent);
- letter-spacing: 0.02em;
- }
-
+ .product-name { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.3; }
+ .product-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.02em; }
  .product-actions { padding: 0 1.25rem 1.25rem; }
-
- .add-to-cart {
- width: 100%;
- padding: 0.75rem;
- background: transparent;
- border: 1px solid var(--border);
- border-radius: 8px;
- color: var(--text-primary);
- font-size: 0.85rem;
- font-weight: 600;
- cursor: pointer;
- transition: all 0.2s;
- font-family: inherit;
- }
-
- .add-to-cart:hover {
- background: var(--accent);
- border-color: var(--accent);
- }
-
- /* About Section */
+ .add-to-cart { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+ .add-to-cart:hover { background: var(--accent); border-color: var(--accent); }
  .about { padding: 80px 0; background: var(--bg-secondary); }
- 
- .about-grid {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 4rem;
- align-items: center;
- }
-
- .about-content h2 {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 3rem;
- margin-bottom: 1.5rem;
- }
-
+ .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+ .about-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; margin-bottom: 1.5rem; }
  .about-content h2 span { color: var(--accent); }
-
- .about-content p {
- color: var(--text-secondary);
- margin-bottom: 1.5rem;
- font-size: 1.05rem;
- }
-
- .about-features {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 1rem;
- margin-top: 2rem;
- }
-
- .about-feature {
- display: flex;
- align-items: center;
- gap: 0.75rem;
- color: var(--text-secondary);
- }
-
+ .about-content p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
+ .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+ .about-feature { display: flex; align-items: center; gap: 0.75rem; color: var(--text-secondary); }
  .about-feature span { color: var(--accent); font-size: 1.25rem; }
-
- .about-image {
- aspect-ratio: 1;
- background: var(--bg-tertiary);
- border-radius: 20px;
- overflow: hidden;
- border: 1px solid var(--border);
- }
-
- .about-image img {
- width: 100%;
- height: 100%;
- object-fit: cover;
- }
-
- /* Contact Section */
+ .about-image { aspect-ratio: 1; background: var(--bg-tertiary); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+ .about-image img { width: 100%; height: 100%; object-fit: cover; }
  .contact { padding: 80px 0; }
-
- .contact-grid {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 4rem;
- }
-
- .contact-info h2 {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 3rem;
- margin-bottom: 1.5rem;
- }
-
+ .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+ .contact-info h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; margin-bottom: 1.5rem; }
  .contact-info h2 span { color: var(--accent); }
-
- .contact-info p {
- color: var(--text-secondary);
- margin-bottom: 2rem;
- }
-
+ .contact-info p { color: var(--text-secondary); margin-bottom: 2rem; }
  .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
-
- .contact-method {
- display: flex;
- align-items: center;
- gap: 1rem;
- padding: 1rem;
- background: var(--bg-secondary);
- border-radius: 12px;
- border: 1px solid var(--border);
- }
-
- .contact-method-icon {
- width: 48px; height: 48px;
- background: var(--accent);
- border-radius: 12px;
- display: flex;
- align-items: center;
- justify-content: center;
- font-size: 1.25rem;
- }
-
+ .contact-method { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border); }
+ .contact-method-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
  .contact-method-text strong { display: block; margin-bottom: 0.25rem; }
  .contact-method-text span { color: var(--text-muted); font-size: 0.9rem; }
-
- .contact-form {
- background: var(--bg-secondary);
- padding: 2rem;
- border-radius: 20px;
- border: 1px solid var(--border);
- }
-
+ .contact-form { background: var(--bg-secondary); padding: 2rem; border-radius: 20px; border: 1px solid var(--border); }
  .contact-form h3 { margin-bottom: 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; }
-
  .form-group { margin-bottom: 1rem; }
-
- .form-group label {
- display: block;
- margin-bottom: 0.5rem;
- color: var(--text-muted);
- font-size: 0.85rem;
- }
-
- .form-group input, .form-group textarea {
- width: 100%;
- padding: 0.875rem;
- background: var(--bg-primary);
- border: 1px solid var(--border);
- border-radius: 8px;
- color: var(--text-primary);
- font-size: 1rem;
- font-family: inherit;
- }
-
- .form-group input:focus, .form-group textarea:focus {
- outline: none;
- border-color: var(--accent);
- }
-
+ .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.85rem; }
+ .form-group input, .form-group textarea { width: 100%; padding: 0.875rem; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 1rem; font-family: inherit; }
+ .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
  .form-group textarea { min-height: 120px; resize: vertical; }
-
- /* Footer */
- footer {
- padding: 60px 0 30px;
- border-top: 1px solid var(--border);
- background: var(--bg-secondary);
- }
-
- .footer-grid {
- display: grid;
- grid-template-columns: 2fr 1fr 1fr 1fr;
- gap: 3rem;
- margin-bottom: 3rem;
- }
-
+ footer { padding: 60px 0 30px; border-top: 1px solid var(--border); background: var(--bg-secondary); }
+ .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
  .footer-brand .logo { margin-bottom: 1rem; }
-
- .footer-brand p {
- color: var(--text-secondary);
- font-size: 0.9rem;
- max-width: 280px;
- }
-
- .footer-col h4 {
- font-size: 0.85rem;
- font-weight: 600;
- text-transform: uppercase;
- letter-spacing: 0.05em;
- color: var(--text-muted);
- margin-bottom: 1.25rem;
- }
-
+ .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; max-width: 280px; }
+ .footer-col h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 1.25rem; }
  .footer-col ul { list-style: none; }
-
  .footer-col li { margin-bottom: 0.75rem; }
-
- .footer-col a {
- color: var(--text-secondary);
- text-decoration: none;
- font-size: 0.9rem;
- transition: color 0.2s;
- }
-
+ .footer-col a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
  .footer-col a:hover { color: var(--text-primary); }
-
- .footer-bottom {
- padding-top: 2rem;
- border-top: 1px solid var(--border);
- display: flex;
- justify-content: space-between;
- align-items: center;
- color: var(--text-muted);
- font-size: 0.85rem;
- }
-
- /* Cart Modal */
- .cart-modal {
- display: none;
- position: fixed;
- top: 0; right: 0;
- width: 450px;
- height: 100vh;
- background: var(--bg-secondary);
- border-left: 1px solid var(--border);
- z-index: 2000;
- padding: 2rem;
- overflow-y: auto;
- }
-
+ .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.85rem; }
+ .cart-modal { display: none; position: fixed; top: 0; right: 0; width: 450px; height: 100vh; background: var(--bg-secondary); border-left: 1px solid var(--border); z-index: 2000; padding: 2rem; overflow-y: auto; }
  .cart-modal.active { display: block; animation: slideIn 0.3s ease; }
-
  @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-
- .cart-header {
- display: flex;
- justify-content: space-between;
- align-items: center;
- margin-bottom: 2rem;
- padding-bottom: 1rem;
- border-bottom: 1px solid var(--border);
- }
-
- .cart-header h2 {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 1.5rem;
- letter-spacing: 0.02em;
- }
-
- .close-cart {
- width: 36px; height: 36px;
- background: var(--bg-tertiary);
- border: 1px solid var(--border);
- border-radius: 8px;
- color: var(--text-primary);
- font-size: 1.25rem;
- cursor: pointer;
- }
-
+ .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+ .cart-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.02em; }
+ .close-cart { width: 36px; height: 36px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 1.25rem; cursor: pointer; }
  .cart-items { margin-bottom: 2rem; }
-
- .cart-item {
- display: flex;
- gap: 1rem;
- padding: 1rem 0;
- border-bottom: 1px solid var(--border);
- }
-
- .cart-item img {
- width: 80px; height: 80px;
- object-fit: cover;
- border-radius: 8px;
- background: var(--bg-tertiary);
- }
-
+ .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+ .cart-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: var(--bg-tertiary); }
  .cart-item-info { flex: 1; }
-
  .cart-item-name { font-weight: 600; margin-bottom: 0.25rem; }
-
  .cart-item-price { color: var(--accent); font-weight: 600; }
-
- .cart-item-qty {
- display: flex;
- align-items: center;
- gap: 0.5rem;
- margin-top: 0.5rem;
- }
-
- .qty-btn {
- width: 28px; height: 28px;
- background: var(--bg-tertiary);
- border: 1px solid var(--border);
- border-radius: 6px;
- color: var(--text-primary);
- cursor: pointer;
- font-size: 1rem;
- }
-
- .cart-total {
- padding: 1.5rem;
- background: var(--bg-tertiary);
- border-radius: 12px;
- margin-bottom: 1.5rem;
- }
-
- .cart-total-row {
- display: flex;
- justify-content: space-between;
- margin-bottom: 0.5rem;
- }
-
- .cart-total-row.grand {
- font-size: 1.25rem;
- font-weight: 700;
- padding-top: 0.75rem;
- border-top: 1px solid var(--border);
- margin-top: 0.75rem;
- }
-
- .checkout-btn, .vinted-btn {
- width: 100%;
- padding: 1rem;
- border: none;
- border-radius: 8px;
- color: white;
- font-size: 1rem;
- font-weight: 700;
- cursor: pointer;
- margin-bottom: 0.75rem;
- font-family: inherit;
- }
-
+ .cart-item-qty { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+ .qty-btn { width: 28px; height: 28px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary); cursor: pointer; font-size: 1rem; }
+ .cart-total { padding: 1.5rem; background: var(--bg-tertiary); border-radius: 12px; margin-bottom: 1.5rem; }
+ .cart-total-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+ .cart-total-row.grand { font-size: 1.25rem; font-weight: 700; padding-top: 0.75rem; border-top: 1px solid var(--border); margin-top: 0.75rem; }
+ .checkout-btn, .vinted-btn { width: 100%; padding: 1rem; border: none; border-radius: 8px; color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-bottom: 0.75rem; font-family: inherit; }
  .checkout-btn { background: var(--accent); }
  .vinted-btn { background: #05cf4b; }
-
- /* Toast */
- .toast {
- position: fixed;
- bottom: 2rem;
- left: 50%;
- transform: translateX(-50%) translateY(100px);
- background: var(--bg-card);
- border: 1px solid var(--border);
- padding: 1rem 1.5rem;
- border-radius: 12px;
- z-index: 3000;
- opacity: 0;
- transition: all 0.3s ease;
- }
-
+ .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--bg-card); border: 1px solid var(--border); padding: 1rem 1.5rem; border-radius: 12px; z-index: 3000; opacity: 0; transition: all 0.3s ease; }
  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
  .toast.success { border-color: var(--success); }
- .toast.success::before { content: '✓ '; color: var(--success); }
-
- /* Responsive */
- @media (max-width: 1024px) {
- .products-grid { grid-template-columns: repeat(3, 1fr); }
- .footer-grid { grid-template-columns: 1fr 1fr; }
- .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
- }
-
- @media (max-width: 768px) {
- .hero { padding: 100px 0 60px; }
- .products-grid { grid-template-columns: repeat(2, 1fr); }
- .nav-links { display: none; }
- .footer-grid { grid-template-columns: 1fr; }
- .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
- .cart-modal { width: 100%; }
- .about-features { grid-template-columns: 1fr; }
- }
+ .toast.success::before { content: '? '; color: var(--success); }
+ @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(3, 1fr); } .footer-grid { grid-template-columns: 1fr 1fr; } .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+ @media (max-width: 768px) { .hero { padding: 100px 0 60px; } .products-grid { grid-template-columns: repeat(2, 1fr); } .nav-links { display: none; } .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; } .cart-modal { width: 100%; } .about-features { grid-template-columns: 1fr; } }
+ .checkout-form { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+ .checkout-form input { width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.9rem; }
+ .checkout-form input:focus { outline: none; border-color: var(--accent); }
  </style>
 </head>
 <body>
- <div class="bg-effects">
- <div class="bg-gradient"></div>
- <div class="bg-grid"></div>
- </div>
-
- <!-- Toast -->
+ <div class="bg-effects"><div class="bg-gradient"></div><div class="bg-grid"></div></div>
  <div class="toast" id="toast"></div>
-
- <nav>
- <div class="container">
- <div class="nav-inner">
+ <nav><div class="container"><div class="nav-inner">
  <a href="#" class="logo">VINTAGE<span>X</span></a>
  <ul class="nav-links">
  <li><a href="#products">Shop</a></li>
- <li><a href="#about">Über uns</a></li>
+ <li><a href="#about">Uber uns</a></li>
  <li><a href="#contact">Kontakt</a></li>
  </ul>
  <div class="nav-actions">
- <button class="cart-btn" onclick="toggleCart()">
- 🛒
- <span class="cart-count" id="cartCount">0</span>
- </button>
+ <button class="cart-btn" onclick="toggleCart()">? <span class="cart-count" id="cartCount">0</span></button>
  </div>
- </div>
- </div>
- </nav>
+ </div></div></nav>
 
- <section class="hero">
- <div class="container">
- <div class="hero-content">
+ <section class="hero"><div class="container"><div class="hero-content">
  <div class="hero-badge">Authentische Vintage Streetwear</div>
  <h1>STREETWEAR<br><span>REMIXED</span></h1>
  <p>Entdecke unsere kuratierte Auswahl an Vintage-Klamotten. Von rare Band Tees bis zu klassischen Lederjacken. Jedes Piece ein Unikat.</p>
- <div class="hero-cta">
- <a href="#products" class="btn btn-primary">Shop entdecken</a>
- </div>
- </div>
- </div>
- </section>
+ <div class="hero-cta"><a href="#products" class="btn btn-primary">Shop entdecken</a></div>
+ </div></div></section>
 
- <section class="categories" id="products">
- <div class="container">
- <div class="section-header">
- <span class="section-label">Kollektion</span>
- <h2>Wähle deinen Style</h2>
- </div>
+ <section class="categories" id="products"><div class="container">
+ <div class="section-header"><span class="section-label">Kollektion</span><h2>Wahle deinen Style</h2></div>
  <div class="categories-grid">
  <button class="category-btn active" data-category="all">Alle</button>
  <button class="category-btn" data-category="shirts">Band Tees</button>
@@ -751,164 +175,97 @@
  <button class="category-btn" data-category="hoodies">Hoodies</button>
  <button class="category-btn" data-category="accessoires">Accessoires</button>
  </div>
- </div>
- </section>
+ </div></section>
 
- <section class="products">
- <div class="container">
- <div class="products-grid" id="productsGrid"></div>
- </div>
- </section>
+ <section class="products"><div class="container"><div class="products-grid" id="productsGrid"></div></div></section>
 
- <!-- About Section -->
- <section class="about" id="about">
- <div class="container">
+ <section class="about" id="about"><div class="container">
  <div class="about-grid">
  <div class="about-content">
- <h2>ÜBER <span>VINTAGE X</span></h2>
- <p>Wir sind dein Source für authentische Vintage-Klamotten Jedes Piece wird handverlesen und auf Qualität geprüft.</p>
- <p>Von rare Band Tees aus den 80ern bis zu klassischen Lederjacken – wir bieten dir das Beste aus vergangenen Dekaden mit einem modernen Touch.</p>
+ <h2>UBER <span>VINTAGE X</span></h2>
+ <p>Wir sind dein Source fur authentische Vintage-Klamotten. Jedes Piece wird handverlesen und auf Qualitat gepruft.</p>
+ <p>Von rare Band Tees aus den 80ern bis zu klassischen Lederjacken - wir bieten dir das Beste aus vergangenen Dekaden mit einem modernen Touch.</p>
  <div class="about-features">
- <div class="about-feature"><span>✓</span> Handverlesen</div>
- <div class="about-feature"><span>✓</span> Authentisch</div>
- <div class="about-feature"><span>✓</span> Schneller Versand</div>
- <div class="about-feature"><span>✓</span> 14 Tage Rückgabe</div>
+ <div class="about-feature"><span>?</span> Handverlesen</div>
+ <div class="about-feature"><span>?</span> Authentisch</div>
+ <div class="about-feature"><span>?</span> Schneller Versand</div>
+ <div class="about-feature"><span>?</span> 14 Tage Ruckgabe</div>
  </div>
  </div>
- <div class="about-image">
- <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Vintage Store">
+ <div class="about-image"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Vintage Store"></div>
  </div>
- </div>
- </div>
- </section>
+ </div></section>
 
- <!-- Contact Section -->
- <section class="contact" id="contact">
- <div class="container">
+ <section class="contact" id="contact"><div class="container">
  <div class="contact-grid">
  <div class="contact-info">
  <h2>KONTAKT</h2>
- <p>Du hast Fragen zu einem Produkt oder möchtest etwas Bestimmtes? Schreib uns!</p>
+ <p>Du hast Fragen zu einem Produkt oder mochtest etwas Bestimmtes? Schreib uns!</p>
  <div class="contact-methods">
- <div class="contact-method">
- <div class="contact-method-icon">📧</div>
- <div class="contact-method-text">
- <strong>E-Mail</strong>
- <span>frederik.ernst27@gmail.com</span>
- </div>
- </div>
- <div class="contact-method">
- <div class="contact-method-icon">📱</div>
- <div class="contact-method-text">
- <strong>Instagram</strong>
- <span>@vintagex_official</span>
- </div>
- </div>
- <div class="contact-method">
- <div class="contact-method-icon">💬</div>
- <div class="contact-method-text">
- <strong>Vinted</strong>
- <span>VINTAGE X</span>
- </div>
- </div>
+ <div class="contact-method"><div class="contact-method-icon">?</div><div class="contact-method-text"><strong>E-Mail</strong><span>frederik.ernst27@gmail.com</span></div></div>
+ <div class="contact-method"><div class="contact-method-icon">?</div><div class="contact-method-text"><strong>Instagram</strong><span>@vintagex_official</span></div></div>
+ <div class="contact-method"><div class="contact-method-icon">?</div><div class="contact-method-text"><strong>Vinted</strong><span>VINTAGE X</span></div></div>
  </div>
  </div>
  <div class="contact-form">
  <h3>Nachricht senden</h3>
  <form id="contactForm">
- <div class="form-group">
- <label>Name</label>
- <input type="text" id="contactName" required placeholder="Dein Name">
- </div>
- <div class="form-group">
- <label>E-Mail</label>
- <input type="email" id="contactEmail" required placeholder="deine@email.de">
- </div>
- <div class="form-group">
- <label>Nachricht</label>
- <textarea id="contactMessage" required placeholder="Deine Nachricht..."></textarea>
- </div>
+ <div class="form-group"><label>Name</label><input type="text" id="contactName" required placeholder="Dein Name"></div>
+ <div class="form-group"><label>E-Mail</label><input type="email" id="contactEmail" required placeholder="deine@email.de"></div>
+ <div class="form-group"><label>Nachricht</label><textarea id="contactMessage" required placeholder="Deine Nachricht..."></textarea></div>
  <button type="submit" class="btn btn-primary" style="width: 100%;">Absenden</button>
  </form>
  </div>
  </div>
- </div>
- </section>
+ </div></section>
 
- <footer>
- <div class="container">
+ <footer><div class="container">
  <div class="footer-grid">
- <div class="footer-brand">
- <a href="#" class="logo">VINTAGE<span>X</span></a>
- <p>Dein Source für authentische Vintage-Klamotten Made with ⚡ in Germany.</p>
+ <div class="footer-brand"><a href="#" class="logo">VINTAGE<span>X</span></a><p>Dein Source fur authentische Vintage-Klamotten. Made with ? in Germany.</p></div>
+ <div class="footer-col"><h4>Shop</h4><ul><li><a href="#products">Band Tees</a></li><li><a href="#products">Jacken</a></li><li><a href="#products">Pants</a></li><li><a href="#products">Accessoires</a></li></ul></div>
+ <div class="footer-col"><h4>Info</h4><ul><li><a href="#about">Uber uns</a></li><li><a href="#contact">Kontakt</a></li><li><a href="#">Versand</a></li><li><a href="#">Ruckgabe</a></li></ul></div>
+ <div class="footer-col"><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
  </div>
- <div class="footer-col">
- <h4>Shop</h4>
- <ul>
- <li><a href="#products">Band Tees</a></li>
- <li><a href="#products">Jacken</a></li>
- <li><a href="#products">Pants</a></li>
- <li><a href="#products">Accessoires</a></li>
- </ul>
- </div>
- <div class="footer-col">
- <h4>Info</h4>
- <ul>
- <li><a href="#about">Über uns</a></li>
- <li><a href="#contact">Kontakt</a></li>
- <li><a href="#">Versand</a></li>
- <li><a href="#">Rückgabe</a></li>
- </ul>
- </div>
- <div class="footer-col">
- <h4>Rechtliches</h4>
- <ul>
- <li><a href="#">Impressum</a></li>
- <li><a href="#">Datenschutz</a></li>
- <li><a href="#">AGB</a></li>
- </ul>
- </div>
- </div>
- <div class="footer-bottom">
- <p>© 2026 VINTAGE X. Alle Rechte vorbehalten.</p>
- <p>⚡ Powered by Streetwear</p>
- </div>
- </div>
- </footer>
+ <div class="footer-bottom"><p>2026 VINTAGE X. Alle Rechte vorbehalten.</p><p>? Powered by Streetwear</p></div>
+ </div></footer>
 
- <!-- Cart Modal -->
  <div class="cart-modal" id="cartModal">
- <div class="cart-header">
- <h2>Warenkorb</h2>
- <button class="close-cart" onclick="toggleCart()">×</button>
- </div>
- <div class="cart-items" id="cartItems">
- <p style="color: var(--text-muted); text-align: center; padding: 2rem 0;">Dein Warenkorb ist leer</p>
- </div>
+ <div class="cart-header"><h2>Warenkorb</h2><button class="close-cart" onclick="toggleCart()">?</button></div>
+ <div class="cart-items" id="cartItems"><p style="color: var(--text-muted); text-align: center; padding: 2rem 0;">Dein Warenkorb ist leer</p></div>
  <div class="cart-total" id="cartTotal" style="display: none;">
- <div class="cart-total-row">
- <span>Zwischensumme</span>
- <span id="subtotal">€0.00</span>
+ <div class="cart-total-row"><span>Zwischensumme</span><span id="subtotal">EUR0.00</span></div>
+ <div class="cart-total-row"><span>Versand</span><span>EUR5.00</span></div>
+ <div class="cart-total-row grand"><span>Gesamt</span><span id="grandTotal">EUR5.00</span></div>
  </div>
- <div class="cart-total-row">
- <span>Versand</span>
- <span>€5.00</span>
+ 
+ <div class="checkout-form" id="checkoutForm">
+ <input type="text" id="customerName" placeholder="Vollstandiger Name *" required>
+ <input type="email" id="customerEmail" placeholder="E-Mail *" required>
+ <input type="text" id="customerAddress" placeholder="Strasse, Hausnr. *" required>
+ <input type="text" id="customerZip" placeholder="PLZ, Ort *" required>
+ <input type="tel" id="customerPhone" placeholder="Telefon (optional)">
+ <input type="hidden" id="orderData">
  </div>
- <div class="cart-total-row grand">
- <span>Gesamt</span>
- <span id="grandTotal">€5.00</span>
- </div>
- </div>
+ 
  <button class="checkout-btn" onclick="checkoutPayPal()" id="checkoutBtn" style="display: none;">Mit PayPal bezahlen</button>
- <button class="vinted-btn" onclick="checkoutVinted()" id="vintedBtn" style="display: none;">Über Vinted kaufen</button>
+ <button class="vinted-btn" onclick="checkoutVinted()" id="vintedBtn" style="display: none;">Uber Vinted kaufen</button>
  </div>
+
+ <!-- Hidden Email Form for FormSubmit -->
+ <form id="emailForm" action="https://formsubmit.co/hkonrad918@gmail.com" method="POST" style="display: none;" target="_blank">
+ <input type="text" name="Bestellung" id="emailOrderId">
+ <input type="text" name="Name" id="emailName">
+ <input type="email" name="Email" id="emailEmail">
+ <input type="text" name="Adresse" id="emailAddress">
+ <input type="text" name="Produkte" id="emailProducts">
+ <input type="text" name="Gesamtbetrag" id="emailTotal">
+ <input type="text" name="Zahlungsmethode" id="emailMethod">
+ </form>
 
  <script>
- // Storage Keys
  const PRODUCTS_KEY = 'vintageProducts';
  const ORDERS_KEY = 'vintageOrders';
 
- // Default products
  const defaultProducts = [
  { id: 1, name: "Vintage Band Tee - Oversized", price: 45.00, category: "shirts", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400", badge: "Bestseller" },
  { id: 2, name: "90s Lederjacke - Vintage", price: 129.00, category: "jackets", image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400", badge: "Limited" },
@@ -924,35 +281,28 @@
  { id: 12, name: "Vintage Chain", price: 25.00, category: "accessoires", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400" }
  ];
 
- // Get products from storage
  function getProducts() {
  let products = localStorage.getItem(PRODUCTS_KEY);
  if (!products) {
  products = defaultProducts;
  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(defaultProducts));
- } else {
- products = JSON.parse(products);
- }
+ } else { products = JSON.parse(products); }
  return products;
  }
 
- // Get orders from storage
  function getOrders() {
  const orders = localStorage.getItem(ORDERS_KEY);
  return orders ? JSON.parse(orders) : [];
  }
 
- // Save order
  function saveOrder(order) {
  const orders = getOrders();
  orders.push(order);
  localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
  }
 
- // Cart state
  let cart = [];
 
- // Show toast
  function showToast(message, type = 'success') {
  const toast = document.getElementById('toast');
  toast.textContent = message;
@@ -961,33 +311,17 @@
  setTimeout(() => toast.classList.remove('show'), 3000);
  }
 
- // Render products
  function renderProducts(filter = 'all') {
  const grid = document.getElementById('productsGrid');
  const products = getProducts();
  const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
- 
  if (filtered.length === 0) {
  grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">Keine Produkte in dieser Kategorie</p>';
  return;
  }
- 
- grid.innerHTML = filtered.map(p => `
- <div class="product-card">
- ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
- <img src="${p.image}" alt="${p.name}" class="product-image" onerror="this.src='https://via.placeholder.com/400x400?text=Vintage+X'">
- <div class="product-info">
- <div class="product-name">${p.name}</div>
- <div class="product-price">€${parseFloat(p.price).toFixed(2)}</div>
- </div>
- <div class="product-actions">
- <button class="add-to-cart" onclick="addToCart(${p.id})">In den Warenkorb</button>
- </div>
- </div>
- `).join('');
+ grid.innerHTML = filtered.map(p => `<div class="product-card">${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}<img src="${p.image}" alt="${p.name}" class="product-image" onerror="this.src='https://via.placeholder.com/400x400?text=Vintage+X'"><div class="product-info"><div class="product-name">${p.name}</div><div class="product-price">EUR${parseFloat(p.price).toFixed(2)}</div></div><div class="product-actions"><button class="add-to-cart" onclick="addToCart(${p.id})">In den Warenkorb</button></div></div>`).join('');
  }
 
- // Category filter
  document.querySelectorAll('.category-btn').forEach(btn => {
  btn.addEventListener('click', () => {
  document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
@@ -996,68 +330,47 @@
  });
  });
 
- // Add to cart
  function addToCart(id) {
  const products = getProducts();
  const product = products.find(p => p.id === id);
  if (product) {
  cart.push({...product, cartId: Date.now()});
  updateCart();
- showToast(`${product.name} hinzugefügt!`);
+ showToast(`${product.name} hinzugefugt!`);
  }
  }
 
- // Update cart
  function updateCart() {
  document.getElementById('cartCount').textContent = cart.length;
- 
  const cartItems = document.getElementById('cartItems');
  const cartTotal = document.getElementById('cartTotal');
  const checkoutBtn = document.getElementById('checkoutBtn');
  const vintedBtn = document.getElementById('vintedBtn');
+ const checkoutForm = document.getElementById('checkoutForm');
  
  if (cart.length === 0) {
  cartItems.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 2rem 0;">Dein Warenkorb ist leer</p>';
  cartTotal.style.display = 'none';
  checkoutBtn.style.display = 'none';
  vintedBtn.style.display = 'none';
+ checkoutForm.style.display = 'none';
  return;
  }
-
- // Group items
+ 
  const grouped = {};
- cart.forEach(item => {
- if (!grouped[item.id]) grouped[item.id] = {...item, qty: 0};
- grouped[item.id].qty++;
- });
-
- cartItems.innerHTML = Object.values(grouped).map(item => `
- <div class="cart-item">
- <img src="${item.image}" alt="${item.name}">
- <div class="cart-item-info">
- <div class="cart-item-name">${item.name}</div>
- <div class="cart-item-price">€${parseFloat(item.price).toFixed(2)}</div>
- <div class="cart-item-qty">
- <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
- <span>${item.qty}</span>
- <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
- </div>
- </div>
- </div>
- `).join('');
+ cart.forEach(item => { if (!grouped[item.id]) grouped[item.id] = {...item, qty: 0}; grouped[item.id].qty++; });
+ cartItems.innerHTML = Object.values(grouped).map(item => `<div class="cart-item"><img src="${item.image}" alt="${item.name}"><div class="cart-item-info"><div class="cart-item-name">${item.name}</div><div class="cart-item-price">EUR${parseFloat(item.price).toFixed(2)}</div><div class="cart-item-qty"><button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button><span>${item.qty}</span><button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button></div></div></div>`).join('');
  
  const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
  const total = subtotal + 5;
- 
- document.getElementById('subtotal').textContent = `€${subtotal.toFixed(2)}`;
- document.getElementById('grandTotal').textContent = `€${total.toFixed(2)}`;
- 
+ document.getElementById('subtotal').textContent = `EUR${subtotal.toFixed(2)}`;
+ document.getElementById('grandTotal').textContent = `EUR${total.toFixed(2)}`;
  cartTotal.style.display = 'block';
  checkoutBtn.style.display = 'block';
  vintedBtn.style.display = 'block';
+ checkoutForm.style.display = 'block';
  }
 
- // Change quantity
  function changeQty(id, delta) {
  const idx = cart.findIndex(item => item.id === id);
  if (idx > -1) {
@@ -1065,34 +378,45 @@
  const products = getProducts();
  const product = products.find(p => p.id === id);
  cart.push({...product, cartId: Date.now()});
- } else {
- cart.splice(idx, 1);
- }
+ } else { cart.splice(idx, 1); }
  updateCart();
  }
  }
 
- // Remove from cart
- function removeFromCart(cartId) {
- cart = cart.filter(item => item.cartId !== cartId);
- updateCart();
+ function toggleCart() { document.getElementById('cartModal').classList.toggle('active'); }
+
+ function sendOrderEmail(order, customer) {
+ const subtotal = order.items.reduce((sum, item) => sum + parseFloat(item.price), 0);
+ const productsList = order.items.map(item => `${item.name} - EUR ${parseFloat(item.price).toFixed(2)}`).join(', ');
+ 
+ document.getElementById('emailOrderId').value = order.id;
+ document.getElementById('emailName').value = customer.name;
+ document.getElementById('emailEmail').value = customer.email;
+ document.getElementById('emailAddress').value = customer.address + ', ' + customer.zip;
+ document.getElementById('emailProducts').value = productsList;
+ document.getElementById('emailTotal').value = 'EUR ' + order.total.toFixed(2);
+ document.getElementById('emailMethod').value = order.method;
+ 
+ document.getElementById('emailForm').submit();
  }
 
- // Toggle cart
- function toggleCart() {
- document.getElementById('cartModal').classList.toggle('active');
- }
-
- // Checkout PayPal
  function checkoutPayPal() {
  if (cart.length === 0) return;
  
- // Get customer info
- const customerName = prompt('Dein Name:');
- if (!customerName) return;
+ const name = document.getElementById('customerName').value.trim();
+ const email = document.getElementById('customerEmail').value.trim();
+ const address = document.getElementById('customerAddress').value.trim();
+ const zip = document.getElementById('customerZip').value.trim();
  
- const customerEmail = prompt('Deine E-Mail:');
- if (!customerEmail) return;
+ if (!name || !email || !address || !zip) {
+ alert('Bitte alle Pflichtfelder ausfullen!');
+ return;
+ }
+ 
+ if (!email.includes('@')) {
+ alert('Bitte eine gultige E-Mail eingeben!');
+ return;
+ }
  
  const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
  const shipping = 5;
@@ -1102,7 +426,7 @@
  id: 'ORD-' + Date.now(),
  date: new Date().toISOString(),
  items: cart.map(item => ({ name: item.name, price: item.price, qty: 1 })),
- customer: { name: customerName, email: customerEmail },
+ customer: { name, email, address, zip, phone: document.getElementById('customerPhone').value },
  subtotal: subtotal,
  shipping: shipping,
  total: total,
@@ -1112,77 +436,75 @@
  
  saveOrder(order);
  
- // Create PayPal.me link
- const paypalLink = 'https://www.paypal.com/paypalme/frederikernst2702/' + total.toFixed(2) + 'EUR';
+ // Send email via FormSubmit
+ sendOrderEmail(order, order.customer);
  
- // Send email notification
- const emailBody = 'NEUE BESTELLUNG - VINTAGE X\n\n' +
- 'Bestellnr: ' + order.id + '\n' +
- 'Kunde: ' + customerName + '\n' +
- 'Email: ' + customerEmail + '\n\n' +
- 'Produkte:\n' +
- cart.map(item => '- ' + item.name + ' - EUR ' + parseFloat(item.price).toFixed(2)).join('\n') + '\n\n' +
- 'Versand: EUR ' + shipping.toFixed(2) + '\n' +
- 'GESAMT: EUR ' + total.toFixed(2) + '\n\n' +
- 'Zahlung via PayPal.me erwartet.';
+ // Open PayPal.me
+ const paypalLink = 'https://www.paypal.com/paypalme/hkonrad918/' + total.toFixed(2);
+ setTimeout(() => { window.open(paypalLink, '_blank'); }, 1000);
  
- window.open('mailto:frederik.ernst27@gmail.com?subject=' + encodeURIComponent('Bestellung: ' + order.id) + '&body=' + encodeURIComponent(emailBody), '_blank');
- 
- // Open PayPal after short delay
- setTimeout(() => {
- window.open(paypalLink, '_blank');
- }, 500);
- 
- showToast('Weiterleitung zu PayPal...');
+ showToast('Bestellung eingereicht! Weiterleitung zu PayPal...');
  cart = [];
  updateCart();
- toggleCart();
  }
 
- // Checkout Vinted
  function checkoutVinted() {
  if (cart.length === 0) return;
+ 
+ const name = document.getElementById('customerName').value.trim();
+ const email = document.getElementById('customerEmail').value.trim();
+ const address = document.getElementById('customerAddress').value.trim();
+ const zip = document.getElementById('customerZip').value.trim();
+ 
+ if (!name || !email || !address || !zip) {
+ alert('Bitte alle Pflichtfelder ausfullen!');
+ return;
+ }
+ 
+ const subtotal = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+ const shipping = 5;
+ const total = subtotal + shipping;
  
  const order = {
  id: 'ORD-' + Date.now(),
  date: new Date().toISOString(),
- items: [...cart],
- total: cart.reduce((sum, item) => sum + parseFloat(item.price), 0) + 5,
+ items: cart.map(item => ({ name: item.name, price: item.price, qty: 1 })),
+ customer: { name, email, address, zip, phone: document.getElementById('customerPhone').value },
+ subtotal: subtotal,
+ shipping: shipping,
+ total: total,
  method: 'Vinted',
  status: 'pending'
  };
  
  saveOrder(order);
- alert('Bestellung erstellt! Bestellnummer: ' + order.id + '\n\nDu wirst zu Vinted weitergeleitet...');
+ 
+ // Send email via FormSubmit
+ sendOrderEmail(order, order.customer);
+ 
+ alert('Bestellung eingereicht! Du wirst zu Vinted weitergeleitet. Bestellnr: ' + order.id);
  cart = [];
  updateCart();
- toggleCart();
  }
 
- // Contact form
  document.getElementById('contactForm').addEventListener('submit', function(e) {
  e.preventDefault();
  const name = document.getElementById('contactName').value;
  const email = document.getElementById('contactEmail').value;
  const message = document.getElementById('contactMessage').value;
- 
- // Save contact request
  const contacts = JSON.parse(localStorage.getItem('vintageContacts') || '[]');
  contacts.push({ id: Date.now(), name, email, message, date: new Date().toISOString() });
  localStorage.setItem('vintageContacts', JSON.stringify(contacts));
- 
  showToast('Nachricht gesendet! Wir melden uns bald.');
  this.reset();
  });
 
- // Navbar scroll
  window.addEventListener('scroll', () => {
  const nav = document.querySelector('nav');
  if (window.scrollY > 50) nav.classList.add('scrolled');
  else nav.classList.remove('scrolled');
  });
 
- // Initialize
  renderProducts();
  </script>
 </body>
